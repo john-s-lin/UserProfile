@@ -20,6 +20,7 @@
     <string name="set_speech_rate">Définir le débit de parole</string>
     <string name="set_pitch_rate">Définir le taux de pitch</string>
     <string name="test_tts_button">Tester TTS</string>
+	<string name="set_sport_type">"Définir le type de sport"</string>
     <string name="full_name_hint">Entrez votre nom complet</string>
     <string name="date_of_birth_hint">Entrez votre date de naissance (mm/dd/yyyy)</string>
     <string name="male">Mâle</string>

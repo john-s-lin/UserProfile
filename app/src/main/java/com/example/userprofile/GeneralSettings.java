@@ -28,7 +28,7 @@ public class GeneralSettings extends AppCompatActivity {
     private RadioGroup radioGroupUnits;
     private RadioButton radioButtonMiles;
     private RadioButton radioButtonKM;
-    private SharedPreferences preferences;
+    protected SharedPreferences preferences;
     private static final String SB_PROGRESS = "sb_progress";
     private static final String PB_PROGRESS = "pb_progress";
     private static final String LANG_PROGRESS = "spinner_progress";
@@ -38,7 +38,9 @@ public class GeneralSettings extends AppCompatActivity {
     TextView tvGPSFreqSelected;
     private TextToSpeech tts;
     private static final String[] languages = new String[]{"Language","en", "fr"};
+    private static final String[] sportTypes = new String[]{"Sport Type","bike", "jogging", "other"};
     Spinner languageSpinner;
+    Spinner sportTypeSpinner;
     NumberPicker gpsNumberPicker;
     LanguageManager lang;
 
@@ -113,6 +115,52 @@ public class GeneralSettings extends AppCompatActivity {
             }
         });
 
+        // SPORT TYPE OPTIONS
+        gpsNumberPicker = findViewById(R.id.GPSNumberPicker);
+        tvGPSFreqSelected = findViewById(R.id.tvGPSFreqSelected);
+
+
+        // Source code taken from https://stackoverflow.com/questions/13377361/how-to-create-a-drop-down-list
+        sportTypeSpinner = findViewById(R.id.sportSpinner);
+        ArrayAdapter<String>adapter2 = new ArrayAdapter<String>(GeneralSettings.this,
+                android.R.layout.simple_spinner_item,sportTypes);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sportTypeSpinner.setAdapter(adapter2);
+        sportTypeSpinner.setSelection(0);
+        sportTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String selectedSport = adapterView.getItemAtPosition(i).toString();
+
+                gpsNumberPicker = findViewById(R.id.GPSNumberPicker);
+                tvGPSFreqSelected = findViewById(R.id.tvGPSFreqSelected);
+
+                if (selectedSport.equals("bike")){
+                    editor.putInt(FREQ_PROGRESS,5);
+                    gpsNumberPicker.setValue(5);
+                    tvGPSFreqSelected.setText("Freq: 5");
+                    editor.commit();
+                } else if (selectedSport.equals("jogging")){
+                    editor.putInt(FREQ_PROGRESS,15);
+                    gpsNumberPicker.setValue(15);
+                    tvGPSFreqSelected.setText("Freq: 15");
+                    editor.commit();
+                } else if (selectedSport.equals("other")){
+                    editor.putInt(FREQ_PROGRESS,10);
+                    gpsNumberPicker.setValue(10);
+                    tvGPSFreqSelected.setText("Freq: 10");
+                    editor.commit();
+                } else {
+                    Toast.makeText(GeneralSettings.this, "Please select a sport type", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         // GPS FREQUENCY OPTIONS
         gpsNumberPicker = findViewById(R.id.GPSNumberPicker);
         gpsNumberPicker.setMaxValue(15);
@@ -127,6 +175,7 @@ public class GeneralSettings extends AppCompatActivity {
                 gpsNumberPicker.setValue(newValue);
                 tvGPSFreqSelected.setText("Freq: " + newValue);
                 editor.commit();
+
             }
         });
 
