@@ -59,7 +59,21 @@
         android:layout_height="wrap_content"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLanguageOptions" />
+
+    <Spinner
+        android:id="@+id/sportSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tVSportType" />
 
     <TextView
         android:id="@+id/tvVoiceFeedBackOptions"
@@ -100,6 +114,16 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintTop_toBottomOf="@+id/sBSpeechRate" />
 
+    <TextView
+        android:id="@+id/tVSportType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/set_sport_type"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/testButton" />
+
     <SeekBar
         android:id="@+id/sBPitchRate"
         android:layout_width="match_parent"
@@ -139,37 +163,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eTTest" />
 
-    <TextView
-        android:id="@+id/tvGPSFreq"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="@string/gps_freq"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintTop_toBottomOf="@+id/testButton" />
-
-    <TextView
-        android:id="@+id/tvGPSFreqSelected"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:padding="8dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvGPSFreq"
-        app:layout_constraintTop_toBottomOf="@+id/testButton" />
-
     <NumberPicker
         android:id="@+id/GPSNumberPicker"
         android:layout_width="250dp"
         android:layout_height="100dp"
+        android:layout_marginTop="12dp"
         android:background="@android:drawable/btn_dropdown"
         android:scaleX="0.75"
         android:scaleY="0.75"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvGPSFreq" />
+
+    <TextView
+        android:id="@+id/tvGPSFreqSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:padding="8dp"
+        android:text=""
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toEndOf="@+id/tvGPSFreq"
+        app:layout_constraintTop_toBottomOf="@+id/testButton" />
+
+    <TextView
+        android:id="@+id/tvGPSFreq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:padding="8dp"
+        android:text="@string/gps_freq"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/testButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
